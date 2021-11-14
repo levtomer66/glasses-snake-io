@@ -1,18 +1,16 @@
-function play(moronName) {
-    let audio = ''
-    switch (moronName) {
-        case 'kushfitz':
-            audio = new Audio('assets/audio/koshfir-kulam.mp3');
-            break;
-        case 'atziz':
-            audio = new Audio('assets/audio/atziz-kulam.mp3');
-            break;
-        case 'somer':
-            audio = new Audio('assets/audio/somer-rigushim.mp4');
-            break;
-        case 'yoash':
-            audio = new Audio('assets/audio/yoash-driving.mp3');
-            break;
+const KOLAM = ["atziz", "koshfir", "somer", "yoash"]
+window.onload = function() {
+    
+    let div = document.getElementById("kolam");
+    for (let index = 0; index < KOLAM.length; index++) {
+        const element = KOLAM[index];
+        let img = document.createElement("img");
+        img.onclick = function (e) {
+            const audio = new Audio('assets/audio/' + KOLAM[index] + '.mp3');
+            audio.play();
+        }
+        img.src = "assets/images/" + KOLAM[index] + ".jpeg"
+        img.classList = ["responsive"]
+        div.appendChild(img)
     }
-    audio.play();
 }
